@@ -84,10 +84,11 @@ public class SeckillUserService {
         String formPass = loginVo.getPassword();
         //判断手机号是否存在
         SeckillUser user = getById(Long.parseLong(mobile));
-        if (user == null) {
+       if (user == null) {
             throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
         }
         //验证密码
+        System.out.println(user);
         String dbPass = user.getPassword();
         String saltDB = user.getSalt();
         String calcPass = MD5Util.formPassToDBPass(formPass, saltDB);
